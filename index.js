@@ -28,46 +28,123 @@ const posts = [
     }
 ]
 
-const mainEl = document.getElementById("main-el")
-let allCards = ""
 
-	for(let i = 0; i < posts.length; i++) {
-		console.log(posts[i])
-		allCards += `<div class="description">
-		<img class="main-avatar" src="${posts[i].avatar}" alt="small picture of Vincent Van Gogh">
+const description = document.getElementById("description")
+const postImage = document.getElementById("post-image")
+const btnsWrap = document.getElementById("btns-wrap")
+const likeBtn = document.getElementById("like-btn")
+const count = document.getElementById("count")
+const comments = document.getElementById("comments")
+const nextBtn = document.getElementById("next-btn")
+const prevBtn = document.getElementById("prev-btn")
+let position = 0
+let likesCount = 0
+
+
+
+count.textContent = 0
+
+    
+desc =  `
+		<img class="main-avatar" src="${posts[position].avatar}" alt="small picture of Vincent Van Gogh">
 	<div class="info-wrap">
-	<p class="name bold">${posts[i].name}</p>
-	<p class="location">${posts[i].location}</p>
+	<p class="name bold">${posts[position].name}</p>
+	<p class="location">${posts[position].location}</p>
 </div>
+`
+
+
+
+photo =	`
+<img class="main-img" src="${posts[position].post}" alt="A protrait of Van Gogh">
+`
+    
+    
+comment =	`
+<p class="comments"><span class="bold">${posts[position].username}</span> ${posts[position].comment}</p>
+`
+    
+
+description.innerHTML = desc
+postImage.innerHTML = photo
+comments.innerHTML = comment
+
+    
+
+nextBtn.addEventListener("click", nextPost) 
+function nextPost(){
+    likesCount = 0
+    count.textContent = 0
+    if(position === posts.length - 1) {
+        position = 0
+    } else {
+        position += 1
+    }
+    
+    desc =  `
+    <img class="main-avatar" src="${posts[position].avatar}" alt="small picture of Vincent Van Gogh">
+<div class="info-wrap">
+<p class="name bold">${posts[position].name}</p>
+<p class="location">${posts[position].location}</p>
 </div>
-	<img class="main-img" src="${posts[i].post}" alt="A protrait of Van Gogh">
-	<div class="incons-wrap">
-	<img class="like" id="like-btn" src="images/like.png" alt="like icon">
-	<img class="comment" src="images/comment.png" alt="comment icon">
-	<img class="share" src="images/share.png" alt="like icon">
-		</div>
-		<p class="likes-numbers bold" id="likes-increment">${posts[i].likes} likes</p>
-<p class="comments"><span class="bold">${posts[i].username}</span> ${posts[i].comment}</p>`
-	}
-	mainEl.innerHTML = allCards
-	console.log(allCards)
+`
 
 
 
-// const likeBtn = document.getElementById("like-btn");
-// const likesIncrement = document.getElementById("likes-increment")
+photo =	`
+<img class="main-img" src="${posts[position].post}" alt="A protrait of Van Gogh">
+`
 
-// let likes = likes
-// console.log(likes ++)
-// console.log(likes, likesIncrement, likeBtn)
 
-// likesIncrement.innerHTML = `${likes} likes`
+comment =	`
+<p class="comments"><span class="bold">${posts[position].username}</span> ${posts[position].comment}</p>
+`
 
-// likeBtn.addEventListener("click", addLikes)
+description.innerHTML = desc
+postImage.innerHTML = photo
+comments.innerHTML = comment
+}
 
-// function addLikes() {
-// 	console.log("clicked")
-// 	likes = likes + 1
-// likesIncrement.innerHTML = `${likes} likes`
-// }
+prevBtn.addEventListener("click", prevPost)
+function prevPost() {
+    likesCount = 0
+    count.textContent = 0
+    if(position === 0) {
+        position = posts.length -1
+    } else {
+        position --
+    }
+    desc =  `
+    <img class="main-avatar" src="${posts[position].avatar}" alt="small picture of Vincent Van Gogh">
+<div class="info-wrap">
+<p class="name bold">${posts[position].name}</p>
+<p class="location">${posts[position].location}</p>
+</div>
+`
+
+
+
+photo =	`
+<img class="main-img" src="${posts[position].post}" alt="A protrait of Van Gogh">
+`
+
+
+comment =	`
+<p class="comments"><span class="bold">${posts[position].username}</span> ${posts[position].comment}</p>
+`
+
+description.innerHTML = desc
+postImage.innerHTML = photo
+comments.innerHTML = comment
+}
+
+
+
+likeBtn.addEventListener("click", addLikes)
+postImage.addEventListener("dblclick", addLikes)
+
+function addLikes() {
+	likesCount += 1
+count.textContent = likesCount
+}
 

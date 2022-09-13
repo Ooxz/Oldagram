@@ -2,14 +2,25 @@ html, body {
 	margin: 0 auto;
 	padding: 0;
 	font-family: 'Source Sans Pro', sans-serif;
-	width: 375px;
+	width: 365px;
 	font-size: 13px;
+	background-color: grey;
+}
+
+.container {
+	margin-top: 50px;
+	background-color: white;
+	border: 3px solid black;
+	border-radius: 20px;
 }
 
 header {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 16px;
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
+	
 }
 
 .logo {
@@ -50,12 +61,63 @@ header {
 .main-img {
 	margin-bottom: 0;
 	display: block;
+	width: 100%;
+	position: relative;
+	cursor: pointer;
+}
+
+main {
+	position: relative;
+}
+
+.btns {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: absolute;
+	top: 50%;
+}
+
+main .btns button {
+	border-radius: 50%;
+	opacity: 0.5;
+	font-size: 20px;
+	height: 35px;
+	width: 35px;
+	background-color: whitesmoke;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+} 
+
+.previous-btn {
+	margin-left: 10px;
+}
+
+.next-btn {
+	margin-right: 10px;
+}
+
+.next-btn, 
+.previous-btn {
+	transition: all .2s ease-in-out; 
+}
+
+.previous-btn:hover,
+.next-btn:hover,
+.previous-btn:focus,
+.next-btn:focus {
+	transform: scale(1.1); 
 }
 
 .icons-wrap {
 	margin-left: 10px;
 	margin-top: 0px;
 	padding-top: 0;
+}
+
+#count {
+	margin-left: 20px;
 }
 
 .like,
@@ -67,6 +129,7 @@ header {
 .like, 
 .comment, 
 .share {
+	cursor: pointer;
 	transition: all .2s ease-in-out;
 }
 
@@ -79,11 +142,23 @@ header {
  {
 	transform: scale(1.2); 
 }
+
 .bold {
 	font-weight: 700;
 }
 
-.likes-numbers,
 .comments {
 	margin-left: 13px;
+}
+
+.likes-number {
+	margin-left: 0px;
+}
+
+#count {
+	margin-left: 13px;
+}
+
+.comments {
+	margin-bottom: 20px;
 }
